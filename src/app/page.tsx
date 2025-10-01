@@ -7,11 +7,11 @@ export default function Home() {
   return (
     <main className="py-12">
       <Hero />
-      <div className="border-t border-gray-200 my-10" />
+      <div className="border-t border-gray-200 my-8" />
       <About />
       <div className="my-8" />
       <Projects />
-      <div className="border-t border-gray-200 my-10" />
+      <div className="border-t border-gray-200 my-8" />
       <Contact />
       <footer className="py-8 text-sm text-muted-text">
         <a href="mailto:hola@juanperez.com" className="text-primary">hola@juanperez.com</a>
