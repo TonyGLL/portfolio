@@ -1,17 +1,25 @@
+import Image from 'next/image';
+
 export default function About() {
-  const skills = ['Node.js', 'Typescript', 'React / Next.js', 'Databases', 'Cloud / AWS', 'Docker']
+  const skills = ['Node.js', 'React / Next.js', 'Golang', 'Cloud / AWS', 'Docker', 'SQL / NoSQL', 'Clean Architecture']
 
   return (
     <section>
       <div className="flex gap-6 items-start">
         <div className="w-20 hidden sm:block">
-          <div className="w-16 h-16 rounded-full overflow-hidden">
-            <img src="/avatar.jpg" alt="Juan" className="object-cover w-full h-full" />
+          <div className="w-21 h-21 rounded-full object-cover overflow-hidden">
+            <Image
+              src="/profile.png"
+              alt="Juan"
+              width={64}
+              height={64}
+              className="object-cover w-full h-full"
+            />
           </div>
         </div>
         <div className="flex-1">
           <p className="text-slate-700">
-            Lorem ipsum in the cue toit olimpem for enungrgs in tatuitts etale js youen keaute robust, scalable web solutions.
+            I am currently focused on mastering full-stack development, utilizing Angular for front-end development and Node.js for back-end. I efficiently manage and interact with various databases, including MySQL, PostgreSQL, and MongoDB. Additionally, i leverage Firebase for backend services and Docker for containerization, ensuring scalable and efficient deployment of applications.
           </p>
 
           <h3 className="mt-6 font-semibold text-lg">About Me</h3>

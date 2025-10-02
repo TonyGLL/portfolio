@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function Hero() {
   return (
     <section className="pt-8 pb-6">
@@ -17,11 +19,11 @@ export default function Hero() {
         <div className="flex items-center gap-4">
           <div className="ml-4 flex gap-3">
             {/* Social icons */}
-            <a aria-label="GitHub" className="p-2 rounded-full border" href="#">
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="..."/></svg>
+            <a aria-label="GitHub" className='flex justify-center items-center' target='_blank' href="https://github.com/TonyGLL">
+              <Image src="/github-mark.svg" width={24} height={24} alt='Github' unoptimized />
             </a>
-            <a aria-label="LinkedIn" className="p-2 rounded-full border" href="#">
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="..."/></svg>
+            <a aria-label="LinkedIn" className='flex justify-center items-center' target='_blank' href="https://www.linkedin.com/in/jose-antonio-gonzalez-llambia-85aa9b183/">
+              <Image src="/linkedin-mark.png" width={30} height={30} alt='Linkedin' unoptimized />
             </a>
           </div>
         </div>
