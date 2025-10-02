@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import profileImg from '../../../public/profile.png';
 
 export default function About() {
   const skills = ['Node.js', 'React / Next.js', 'Golang', 'Cloud / AWS', 'Docker', 'SQL / NoSQL', 'Clean Architecture']
@@ -9,7 +10,7 @@ export default function About() {
         <div className="w-20 hidden sm:block">
           <div className="w-21 h-21 rounded-full object-cover overflow-hidden">
             <Image
-              src="/profile.png"
+              src={profileImg}
               alt="Juan"
               width={64}
               height={64}

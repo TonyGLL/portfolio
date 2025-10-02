@@ -1,4 +1,6 @@
 import Image from 'next/image'
+import githubIcon from '../../../public/github-mark.svg';
+import linkedinIcon from '../../../public/linkedin-mark.png';
 
 export default function Hero() {
   return (
@@ -20,10 +22,10 @@ export default function Hero() {
           <div className="ml-4 flex gap-3">
             {/* Social icons */}
             <a aria-label="GitHub" className='flex justify-center items-center' target='_blank' href="https://github.com/TonyGLL">
-              <Image src="/github-mark.svg" width={24} height={24} alt='Github' unoptimized />
+              <Image src={githubIcon} width={24} height={24} alt='Github' unoptimized />
             </a>
             <a aria-label="LinkedIn" className='flex justify-center items-center' target='_blank' href="https://www.linkedin.com/in/jose-antonio-gonzalez-llambia-85aa9b183/">
-              <Image src="/linkedin-mark.png" width={30} height={30} alt='Linkedin' unoptimized />
+              <Image src={linkedinIcon} width={30} height={30} alt='Linkedin' unoptimized />
             </a>
           </div>
         </div>
