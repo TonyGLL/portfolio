@@ -13,9 +13,6 @@ export default function Home() {
       <Projects />
       <div className="border-t border-gray-200 my-8" />
       <Contact />
-      <footer className="py-8 text-sm text-muted-text">
-        <a href="mailto:tonydevelopmentqa@gmail.com" className="text-primary">tonydevelopmentqa@gmail.com</a>
-      </footer>
     </main>
   )
 }
