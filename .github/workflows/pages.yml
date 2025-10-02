@@ -1,102 +1,75 @@
-# Name of the workflow that will appear in the "Actions" tab of your GitHub repository
-name: Deploy Next.js site to Pages
+# Nombre del flujo de trabajo
+name: Deploy Next.js site to Pages with Bun
 
 on:
-  # Runs on pushes targeting the 'main' branch
+  # Se ejecuta en cada push a la rama 'main'
   push:
     branches: ['main']
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Permite ejecutar este flujo de trabajo manualmente
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# Configura los permisos del GITHUB_TOKEN para el despliegue
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# Permite solo un despliegue concurrente
 concurrency:
   group: 'pages'
   cancel-in-progress: false
 
 jobs:
-  # Build job
+  # Job de construcción (Build)
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=yarn" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/pnpm-lock.yaml" ]; then
-            echo "manager=pnpm" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=pnpm" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-            exit 0
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
+      - name: Setup Bun
+        # Esta es la acción oficial para instalar y configurar Bun
+        uses: oven-sh/setup-bun@v1
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          # This is a KEY step. It automatically injects the 'basePath' in your Next.js
-          # config and disables server-side image optimization, which is not supported on Pages.
-          static_site_generator: next
-
-      - name: Restore cache
+      - name: Restaurar caché de Bun
+        # Cache adaptado para Bun
         uses: actions/cache@v4
         with:
-          path: |
-            .next/cache
-          # Generate a new cache whenever packages or source files change.
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          # If source files changed but packages didn't, rebuild from a prior cache.
+          path: ~/.bun/install/cache
+          # La clave de la caché ahora depende del archivo de bloqueo de Bun: bun.lockb
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
+            ${{ runner.os }}-bun-
 
-      - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      - name: Instalar dependencias con Bun
+        # Usamos el comando de instalación de Bun
+        # --frozen-lockfile es una buena práctica en CI para asegurar instalaciones consistentes
+        run: bun install --frozen-lockfile
 
-      - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+      - name: Configurar GitHub Pages
+        # Este paso de Next.js sigue siendo necesario para configurar el basePath
+        uses: actions/configure-pages@v5
+        with:
+          static_site_generator: next
 
-      - name: Upload artifact for GitHub Pages deployment
+      - name: Construir la aplicación con Next.js
+        # Ejecutamos el script de 'build' usando Bun
+        run: bun run build
+
+      - name: Subir el artefacto para el despliegue
         uses: actions/upload-pages-artifact@v3
         with:
-          # The default output directory for a static Next.js export is 'out'
           path: ./out
 
-  # Deployment job
+  # Job de despliegue (Deploy) - No cambia
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    # This job runs only after the 'build' job has completed successfully
     needs: build
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Desplegar en GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
