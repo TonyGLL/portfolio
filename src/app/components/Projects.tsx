@@ -2,13 +2,14 @@ type Project = {
   id: string;
   title: string;
   description: string;
+  url: string;
   tags?: string[];
 }
 
 const projects: Project[] = [
-  { id: '1', title: 'E-commerce API with Node.js and Clean Architecture', description: 'A secure and robust e-commerce backend, built with Node.js and TypeScript, following the principles of Clean Architecture. It includes a dual authentication system, role-based access control, and full e-commerce functionality with Stripe integration.', tags: ['Node.js', 'Typescript', 'Docker', 'Stripe', 'PostgreSQL', 'Clean Architecture'] },
-  { id: '2', title: 'Data Atructures and Algorithms in TypeScript', description: 'A secure and robust e-commerce backend, built with Node.js and TypeScript, following the principles of Clean Architecture. It includes a dual authentication system, role-based access control, and full e-commerce functionality with Stripe integration.', tags: ['Typescript', 'Big O', 'Data structures', 'Algorithms'] },
-  { id: '3', title: 'Image Processing Service', description: 'This is a Go-based image processing service that provides a RESTful API for managing users and (eventually) processing images. It uses JWT for authentication and PostgreSQL as its database. The service is containerized using Docker and supports live reloading for development.', tags: ['Golang', 'Docker', 'PostgreSQL'] }
+  { id: '1', title: 'E-commerce API with Node.js and Clean Architecture', description: 'A secure and robust e-commerce backend, built with Node.js and TypeScript, following the principles of Clean Architecture. It includes a dual authentication system, role-based access control, and full e-commerce functionality with Stripe integration.', tags: ['Node.js', 'Typescript', 'Docker', 'Stripe', 'PostgreSQL', 'Clean Architecture'], url: 'https://github.com/TonyGLL/clean-architecture-nodejs' },
+  { id: '2', title: 'Data Structures and Algorithms (DSA)', description: 'This project is a 12-week study plan for learning Data Structures and Algorithms using TypeScript. It covers fundamental concepts like Big-O notation, various data structures (Arrays, Linked Lists, Stacks, Queues, Hash Tables, Trees, Graphs), sorting algorithms, and advanced topics like Dynamic Programming and Greedy Algorithms. The ultimate goal is to implement these concepts and create a small, well-documented, and tested DSA library in TypeScript.', tags: ['Typescript', 'Big O', 'Data structures', 'Algorithms'], url: 'https://github.com/TonyGLL/dsa-algorithms' },
+  { id: '3', title: 'Caching Proxy Server with Go', description: 'This project is a caching proxy server built in Go. It acts as an intermediary between clients and an origin server, caching responses to improve performance and reduce the load on the origin server.', tags: ['Golang', 'Docker', 'Redis'], url: 'https://github.com/TonyGLL/caching-proxy-server' }
 ]
 
 export default function Projects() {
@@ -28,7 +29,7 @@ export default function Projects() {
             </div>
 
             <div className="mt-6 w-full">
-              <a className="w-full flex justify-center" href="https://github.com/TonyGLL/clean-architecture-nodejs" target="_blank" rel="noopener noreferrer"><button className="px-4 py-2 rounded-full bg-primary text-white cursor-pointer w-[80%]">View on Github</button></a>
+              <a className="w-full flex justify-center" href={p.url} target="_blank" rel="noopener noreferrer"><button className="px-4 py-2 rounded-full bg-primary text-white cursor-pointer w-[80%]">View on Github</button></a>
             </div>
           </article>
         ))}
