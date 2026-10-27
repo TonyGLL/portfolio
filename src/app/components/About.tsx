@@ -20,7 +20,7 @@ export default function About() {
         </div>
         <div className="flex-1">
           <p className="text-slate-700">
-            I am currently focused on mastering full-stack development, utilizing Angular for front-end development and Node.js for back-end. I efficiently manage and interact with various databases, including MySQL, PostgreSQL, and MongoDB. Additionally, i leverage Firebase for backend services and Docker for containerization, ensuring scalable and efficient deployment of applications.
+            I am a full-stack developer focused on building scalable, maintainable backends and modern web interfaces. I work mainly with Node.js and Go on the server and React / Next.js on the front end, applying Clean Architecture principles. I use PostgreSQL and other SQL / NoSQL databases, and I containerize and deploy applications with Docker and AWS.
           </p>
 
           <h3 className="mt-6 font-semibold text-lg">Skills</h3>
