@@ -7,7 +7,7 @@ export default function Hero() {
     <section className="pt-8 pb-6">
       <div className="flex justify-between items-start">
         <div className="flex-1">
-          <h1 className="text-5xl md:text-5xl font-extrabold tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
             JOSÉ ANTONIO GONZÁLEZ LLAMBIA
           </h1>
           <p className="mt-3 text-lg text-muted-text">
@@ -21,10 +21,10 @@ export default function Hero() {
         <div className="flex items-center gap-4">
           <div className="ml-4 flex gap-3">
             {/* Social icons */}
-            <a aria-label="GitHub" className='flex justify-center items-center' target='_blank' href="https://github.com/TonyGLL">
+            <a aria-label="GitHub" className='flex justify-center items-center' target='_blank' rel='noopener noreferrer' href="https://github.com/TonyGLL">
               <Image src={githubIcon} width={24} height={24} alt='Github' unoptimized />
             </a>
-            <a aria-label="LinkedIn" className='flex justify-center items-center' target='_blank' href="https://www.linkedin.com/in/jose-antonio-gonzalez-llambia-85aa9b183/">
+            <a aria-label="LinkedIn" className='flex justify-center items-center' target='_blank' rel='noopener noreferrer' href="https://www.linkedin.com/in/jose-antonio-gonzalez-llambia-85aa9b183/">
               <Image src={linkedinIcon} width={30} height={30} alt='Linkedin' unoptimized />
             </a>
           </div>
