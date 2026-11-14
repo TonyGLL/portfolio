@@ -1,0 +1,25 @@
+---
+import '@/styles/global.css'
+
+const title = 'Portfolio | José A González Llambia'
+const description = 'Personal portfolio | Fullstack Developer'
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content="José A González Llambia | Fullstack Developer" />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+  </head>
+  <body>
+    <div class="min-h-screen max-w-6xl mx-auto px-6 lg:px-8">
+      <slot />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+---
+const skills = ['Node.js', 'React / Next.js', 'Golang', 'Cloud / AWS', 'Docker', 'SQL / NoSQL', 'Clean Architecture']
+---
+
+<section>
+  <div class="flex gap-6 items-start">
+    <div class="w-20 hidden sm:block">
+      <div class="w-20 h-20 rounded-full object-cover overflow-hidden">
+        <img
+          src="/profile.webp"
+          alt="José Antonio González Llambia"
+          width="80"
+          height="80"
+          class="object-cover w-full h-full"
+        />
+      </div>
+    </div>
+    <div class="flex-1">
+      <p class="text-slate-700">
+        I am a full-stack developer focused on building scalable, maintainable backends and modern web interfaces. I work mainly with Node.js and Go on the server and React / Next.js on the front end, applying Clean Architecture principles. I use PostgreSQL and other SQL / NoSQL databases, and I containerize and deploy applications with Docker and AWS.
+      </p>
+
+      <h3 class="mt-6 font-semibold text-lg">Skills</h3>
+      <div class="mt-4 flex flex-wrap gap-3">
+        {skills.map((s) => (
+          <span class="pill border-gray-200 bg-white shadow-sm">
+            <svg aria-hidden="true" class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /></svg>
+            <span class="text-sm text-slate-700">{s}</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

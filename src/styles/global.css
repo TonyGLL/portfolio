@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@fontsource-variable/inter";
 
 @theme {
   --color-primary: #2b7be4;
@@ -7,7 +8,7 @@
   --shadow-card: 0 6px 20px rgba(15, 23, 42, 0.06);
   --shadow-card-strong: 0 10px 30px rgba(15, 23, 42, 0.08);
   --radius-lg-2: 14px;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 body {
