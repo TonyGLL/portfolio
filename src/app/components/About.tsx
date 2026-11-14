@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import profileImg from '../../../public/profile.png';
+import profileImg from '../../../public/profile.webp';
 
 export default function About() {
   const skills = ['Node.js', 'React / Next.js', 'Golang', 'Cloud / AWS', 'Docker', 'SQL / NoSQL', 'Clean Architecture']
@@ -12,8 +12,8 @@ export default function About() {
             <Image
               src={profileImg}
               alt="José Antonio González Llambia"
-              width={64}
-              height={64}
+              width={80}
+              height={80}
               className="object-cover w-full h-full"
             />
           </div>
